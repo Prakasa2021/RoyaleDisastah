@@ -8,14 +8,18 @@ TagManager:
   - TPPCam
   - BoxHandler
   - BoxContainer
+  - WeaponHandler
+  - WeaponContainer
+  - Pistol
+  - CinemachineTarget
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Land
   - Water
   - UI
-  - 
+  - Base
   - 
   - 
   - 

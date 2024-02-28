@@ -1,24 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
-public class PickNDrop : MonoBehaviour
+public class PickNDropWeapon : MonoBehaviour
 {
     public Rigidbody rb;
     public BoxCollider coll;
-    public Transform player, boxContainer, boxHandler;
+    public Transform player, weaponContainer, weaponHandler;
     public float pickUpRange;
     public float dropForwardForce, dropUpwardForce;
     public bool equipped;
     public static bool slotFull;
-    Collider colliderBox;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        boxContainer = GameObject.FindGameObjectWithTag("BoxContainer").GetComponent<Transform>();
-        boxHandler = GameObject.FindGameObjectWithTag("BoxHandler").GetComponent<Transform>();
-        colliderBox = GetComponent<Collider>();
+        weaponContainer = GameObject.FindGameObjectWithTag("WeaponContainer").GetComponent<Transform>();
+        weaponHandler = GameObject.FindGameObjectWithTag("WeaponHandler").GetComponent<Transform>();
 
         if (!equipped)
         {
@@ -51,18 +50,19 @@ public class PickNDrop : MonoBehaviour
         equipped = true;
         slotFull = true;
 
-        transform.SetParent(boxContainer);
+        transform.SetParent(weaponContainer);
         transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(Vector3.zero));
         transform.localScale = Vector3.one;
 
         rb.isKinematic = true;
         coll.isTrigger = true;
-        colliderBox.enabled = false;
 
-        // foreach (GameObject go in GameObject.FindGameObjectsWithTag("Weapon"))
+        // GetComponent<BulletSpawn>().enabled = true;
+        // foreach(GameObject go in GameObject.FindGameObjectsWithTag("Box"))
         // {
-        //     go.GetComponent<PickNDropWeapon>().enabled = false;
-        // }
+        //     go.GetComponent<PickNDropBox>().enabled = false;
+        // }        
+        // gunScript.enabled = true;
     }
 
     private void Drop()
@@ -74,17 +74,18 @@ public class PickNDrop : MonoBehaviour
 
         rb.isKinematic = false;
         coll.isTrigger = false;
-        colliderBox.enabled = true;
 
-        rb.AddForce(boxHandler.forward * dropForwardForce, ForceMode.Impulse);
-        rb.AddForce(boxHandler.up * dropUpwardForce, ForceMode.Impulse);
+        rb.AddForce(weaponHandler.forward * dropForwardForce, ForceMode.Impulse);
+        rb.AddForce(weaponHandler.up * dropUpwardForce, ForceMode.Impulse);
 
         float random = Random.Range(-1f, 1f);
         rb.AddTorque(new Vector3(random, random, random) * 10);
 
-        // foreach (GameObject go in GameObject.FindGameObjectsWithTag("Weapon"))
+        // GetComponent<BulletSpawn>().enabled = false;
+        // foreach(GameObject go in GameObject.FindGameObjectsWithTag("Box"))
         // {
-        //     go.GetComponent<PickNDropWeapon>().enabled = true;
-        // }
+        //     go.GetComponent<PickNDropBox>().enabled = true;
+        // }        
+        // gunScript.enabled = false;
     }
 }

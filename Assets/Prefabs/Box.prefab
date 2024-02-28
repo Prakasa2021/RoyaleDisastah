@@ -133,7 +133,6 @@ MonoBehaviour:
   boxContainer: {fileID: 0}
   boxHandler: {fileID: 0}
   pickUpRange: 3
-  dropRange: 1
-  dropForwardForce: 5
+  dropForwardForce: 13
   dropUpwardForce: 5
   equipped: 0

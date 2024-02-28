@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] Transform cam;
     CharacterController controller;
     Vector3 velocity;
-    float speed = 6f;
+    float speed = 10f;
     float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     float gravity = -25f;
