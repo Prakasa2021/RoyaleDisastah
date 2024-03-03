@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8519598360484829237}
   - component: {fileID: 6617072160306333543}
   - component: {fileID: 3378588051365895439}
+  - component: {fileID: 2252088578904586116}
   m_Layer: 0
   m_Name: PistolPrototype
   m_TagString: Pistol
@@ -137,43 +138,25 @@ MonoBehaviour:
   dropForwardForce: 5
   dropUpwardForce: 5
   equipped: 0
-  xAxis:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0
-    m_DecelTime: 0
-    m_InputAxisName: Mouse X
-    m_InputAxisValue: 0
-    m_InvertInput: 0
-    m_MinValue: -180
-    m_MaxValue: 180
-    m_Wrap: 1
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 0
-      m_RecenteringTime: 0
-      m_LegacyHeadingDefinition: 0
-      m_LegacyVelocityFilterStrength: 0
-  yAxis:
-    Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
-    m_AccelTime: 0
-    m_DecelTime: 0
-    m_InputAxisName: Mouse Y
-    m_InputAxisValue: 0
-    m_InvertInput: 1
-    m_MinValue: -60
-    m_MaxValue: 60
-    m_Wrap: 0
-    m_Recentering:
-      m_enabled: 0
-      m_WaitTime: 0
-      m_RecenteringTime: 0
-      m_LegacyHeadingDefinition: 0
-      m_LegacyVelocityFilterStrength: 0
-  camFollow: {fileID: 0}
+--- !u!114 &2252088578904586116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411015156468059182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b445ff1811cf8d4d89b04893c96ae59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.12
+  semiAuto: 0
+  bulletPrefabs: {fileID: 268196273567103598, guid: 78d35897818878740954da2cfbe6363c, type: 3}
+  BulletSpawnPos: {fileID: 2519675263797909633}
+  bulletSpeed: 500
+  bulletPerShot: 1
+  aim: {fileID: 0}
 --- !u!1 &8337453496857806370
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,9 +166,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2519675263797909633}
-  - component: {fileID: 8076500356056482218}
   m_Layer: 0
-  m_Name: BulletShot
+  m_Name: BulletShotPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -206,19 +188,3 @@ Transform:
   m_Father: {fileID: 4411015156468059186}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &8076500356056482218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8337453496857806370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b445ff1811cf8d4d89b04893c96ae59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletSpawnPoint: {fileID: 2519675263797909633}
-  bulletPrefabs: {fileID: 268196273567103598, guid: 78d35897818878740954da2cfbe6363c, type: 3}
-  weaponScript: {fileID: 3378588051365895439}
-  bulletSpeed: 20
