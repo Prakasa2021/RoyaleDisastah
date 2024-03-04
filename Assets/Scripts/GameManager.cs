@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameObject crossHair;
+    [SerializeField] GameObject weaponContainer;
+
     void Start()
     {
 
@@ -11,6 +14,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
+        if (weaponContainer.transform.childCount > 0)
+        {
+            crossHair.SetActive(true);
+        }
+        else
+        {
+            crossHair.SetActive(false);
+        }
     }
 }

@@ -36,7 +36,7 @@ public class DropArea : MonoBehaviour
             {
                 case 1:
                     transform.position = new Vector3(transform.position.x, 2f, transform.position.z - 5f);
-                    Instantiate(Resources.Load("Pistol/PistolPrototype"), transform.position, Quaternion.identity);
+                    Instantiate(Resources.Load("Pistol/Pistol1"), transform.position, Quaternion.identity);
                     boxCount = 0;
                     break;
             }

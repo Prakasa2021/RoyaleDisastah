@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class PickNDropWeapon : MonoBehaviour
 {
@@ -51,6 +52,7 @@ public class PickNDropWeapon : MonoBehaviour
         slotFull = true;
 
         transform.SetParent(weaponContainer);
+
         transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.Euler(Vector3.zero));
         transform.localScale = Vector3.one;
 

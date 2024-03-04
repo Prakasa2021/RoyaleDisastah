@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PistolManager : MonoBehaviour
@@ -21,11 +23,14 @@ public class PistolManager : MonoBehaviour
 
     void Update()
     {
-        if (transform.parent != null && ShouldFire())
+        if (transform.parent != null)
         {
-            // var bullet = Instantiate(bulletPrefabs, BulletSpawnPos.position, BulletSpawnPos.rotation);
-            // bullet.GetComponent<Rigidbody>().velocity = BulletSpawnPos.forward * bulletSpeed;
-            Fire();
+            transform.LookAt(aim.aimPos);
+
+            if (ShouldFire())
+                // var bullet = Instantiate(bulletPrefabs, BulletSpawnPos.position, BulletSpawnPos.rotation);
+                // bullet.GetComponent<Rigidbody>().velocity = BulletSpawnPos.forward * bulletSpeed;
+                Fire();
         }
     }
 
@@ -50,4 +55,33 @@ public class PistolManager : MonoBehaviour
         }
     }
 
+    // public bool isFiring = false;
+    // public ParticleSystem[] muzzleFlash;
+    // public Transform raycastOrigin;
+
+    // Ray ray;
+    // RaycastHit hitInfo;
+
+    // public void StartFiring()
+    // {
+    //     isFiring = true;
+
+    //     foreach (var particle in muzzleFlash)
+    //     {
+    //         particle.Emit(1);
+    //     }
+
+    //     ray.origin = raycastOrigin.position;
+    //     ray.direction = raycastOrigin.forward;
+
+    //     if (Physics.Raycast(ray, out hitInfo) && Input.GetKeyDown(KeyCode.Mouse0))
+    //     {
+    //         Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1f);
+    //     }
+    // }
+
+    // public void StopFiring()
+    // {
+    //     isFiring = false;
+    // }
 }
