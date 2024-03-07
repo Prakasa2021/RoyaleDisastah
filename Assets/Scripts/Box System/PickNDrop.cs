@@ -11,14 +11,14 @@ public class PickNDrop : MonoBehaviour
     public float dropForwardForce, dropUpwardForce;
     public bool equipped;
     public static bool slotFull;
-    Collider colliderBox;
+    // Collider colliderBox;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         boxContainer = GameObject.FindGameObjectWithTag("BoxContainer").GetComponent<Transform>();
         boxHandler = GameObject.FindGameObjectWithTag("BoxHandler").GetComponent<Transform>();
-        colliderBox = GetComponent<Collider>();
+        // colliderBox = GetComponent<Collider>();
 
         if (!equipped)
         {
@@ -57,7 +57,7 @@ public class PickNDrop : MonoBehaviour
 
         rb.isKinematic = true;
         coll.isTrigger = true;
-        colliderBox.enabled = false;
+        // colliderBox.enabled = false;
 
         // foreach (GameObject go in GameObject.FindGameObjectsWithTag("Weapon"))
         // {
@@ -74,7 +74,7 @@ public class PickNDrop : MonoBehaviour
 
         rb.isKinematic = false;
         coll.isTrigger = false;
-        colliderBox.enabled = true;
+        // colliderBox.enabled = true;
 
         rb.AddForce(boxHandler.forward * dropForwardForce, ForceMode.Impulse);
         rb.AddForce(boxHandler.up * dropUpwardForce, ForceMode.Impulse);
