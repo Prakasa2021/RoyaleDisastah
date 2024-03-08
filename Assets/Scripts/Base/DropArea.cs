@@ -15,7 +15,6 @@ public class DropArea : MonoBehaviour
     {
         if (other.CompareTag("Box"))
         {
-            Debug.Log("Trigger");
             Destroy(other.gameObject);
             boxCount += 1;
         }
