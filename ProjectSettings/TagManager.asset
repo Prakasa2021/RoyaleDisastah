@@ -12,6 +12,7 @@ TagManager:
   - WeaponContainer
   - Pistol
   - CinemachineTarget
+  - Bullet
   layers:
   - Default
   - TransparentFX

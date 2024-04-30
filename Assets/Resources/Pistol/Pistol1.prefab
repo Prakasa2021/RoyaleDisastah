@@ -186,8 +186,9 @@ MonoBehaviour:
   semiAuto: 0
   bulletPrefabs: {fileID: 136330, guid: 96bf3158164512c4b9e60e1975e54e79, type: 3}
   BulletSpawnPos: {fileID: 1818712625801951248}
-  bulletSpeed: 500
+  bulletSpeed: 200
   bulletPerShot: 1
+  rotationSpeed: 5
   aim: {fileID: 0}
 --- !u!1 &590915997797535313
 GameObject:
@@ -198,6 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1818712625801951248}
+  - component: {fileID: 5389209741417400860}
   m_Layer: 0
   m_Name: BulletShot
   m_TagString: Untagged
@@ -220,3 +222,21 @@ Transform:
   m_Father: {fileID: 4742856013139978}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5389209741417400860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590915997797535313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d58826e870e56b4582bdb7b8cf610df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aim: {fileID: 0}
+  minXRotation: -1
+  maxXRotation: 1
+  minYRotation: -1
+  maxYRotation: 1
+  rotationSpeed: 1

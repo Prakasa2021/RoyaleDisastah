@@ -6,18 +6,26 @@ using UnityEngine;
 
 public class PistolManager : MonoBehaviour
 {
-    [SerializeField] float fireRate;
+    [SerializeField] float fireRate; //15f new script
     [SerializeField] bool semiAuto;
     float fireRateTimer;
     [SerializeField] GameObject bulletPrefabs;
     [SerializeField] Transform BulletSpawnPos;
     [SerializeField] float bulletSpeed = 40f;
     [SerializeField] int bulletPerShot;
+    [SerializeField] int rotationSpeed;
     public AimState aim;
+
+    // // Raycast Shoot
+    // public float damage = 10f;
+    // public float range = 100f;
+    // public Camera cam;
+    // public float nextTimeToFire = 0f;
 
     void Start()
     {
         aim = GameObject.FindGameObjectWithTag("Player").GetComponent<AimState>();
+        // cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         fireRateTimer = fireRate;
     }
 
@@ -25,13 +33,27 @@ public class PistolManager : MonoBehaviour
     {
         if (transform.parent != null)
         {
-            transform.LookAt(aim.aimPos);
+            // transform.LookAt(aim.aimPos);
+
+            // // Calculate the direction to the target
+            // Vector3 direction = aim.targetPosition - transform.position;
+            // // direction.y = 0f; // Optional: Keep the direction on the XZ plane
+
+            // // Calculate the rotation to look at the target
+            // Quaternion targetRotation = Quaternion.LookRotation(direction);
+            // transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             if (ShouldFire())
                 // var bullet = Instantiate(bulletPrefabs, BulletSpawnPos.position, BulletSpawnPos.rotation);
                 // bullet.GetComponent<Rigidbody>().velocity = BulletSpawnPos.forward * bulletSpeed;
                 Fire();
         }
+
+        // if (transform.parent != null && Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
+        // {
+        //     nextTimeToFire = Time.deltaTime + 1f / fireRate;
+        //     Shoot();
+        // }
     }
 
     bool ShouldFire()
@@ -46,7 +68,15 @@ public class PistolManager : MonoBehaviour
     void Fire()
     {
         fireRateTimer = 0;
-        BulletSpawnPos.LookAt(aim.aimPos);
+        // BulletSpawnPos.LookAt(aim.aimPos);
+
+        // // Calculate the direction to the target
+        // Vector3 direction = aim.targetPosition - transform.position;
+        // // direction.y = 0f; // Optional: Keep the direction on the XZ plane
+
+        // // Calculate the rotation to look at the target
+        // Quaternion targetRotation = Quaternion.LookRotation(direction);
+        // transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
         for (int i = 0; i < bulletPerShot; i++)
         {
@@ -54,34 +84,4 @@ public class PistolManager : MonoBehaviour
             currentBullet.GetComponent<Rigidbody>().AddForce(BulletSpawnPos.forward * bulletSpeed, ForceMode.Impulse);
         }
     }
-
-    // public bool isFiring = false;
-    // public ParticleSystem[] muzzleFlash;
-    // public Transform raycastOrigin;
-
-    // Ray ray;
-    // RaycastHit hitInfo;
-
-    // public void StartFiring()
-    // {
-    //     isFiring = true;
-
-    //     foreach (var particle in muzzleFlash)
-    //     {
-    //         particle.Emit(1);
-    //     }
-
-    //     ray.origin = raycastOrigin.position;
-    //     ray.direction = raycastOrigin.forward;
-
-    //     if (Physics.Raycast(ray, out hitInfo) && Input.GetKeyDown(KeyCode.Mouse0))
-    //     {
-    //         Debug.DrawLine(ray.origin, hitInfo.point, Color.red, 1f);
-    //     }
-    // }
-
-    // public void StopFiring()
-    // {
-    //     isFiring = false;
-    // }
 }

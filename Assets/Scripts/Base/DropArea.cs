@@ -25,7 +25,7 @@ public class DropArea : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
             ExchangeShop();
     }
 

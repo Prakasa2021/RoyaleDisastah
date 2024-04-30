@@ -15,9 +15,10 @@ public class AimState : MonoBehaviour
     public float normalFov;
     public float aimFov;
     public float fovSmoothSpeed = 10f;
-    public Transform aimPos;
+    // public Transform aimPos;
     [SerializeField] float aimSmoothSpeed = 20f;
     [SerializeField] LayerMask aimMask;
+    public Vector3 targetPosition; // Target position for smoothing
 
     void Start()
     {
@@ -34,13 +35,28 @@ public class AimState : MonoBehaviour
         float targetFov = Input.GetMouseButton(1) ? aimFov : normalFov;
         ChangeFov(targetFov);
 
-        Vector2 screenCenter = new(Screen.width / 2, Screen.height / 2);
+        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
         Ray ray = Camera.main.ScreenPointToRay(screenCenter);
 
+        // if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask))
+        // {
+        //     aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
+        // }
+
+        // Create a ray from the mouse position
+        // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+
+        // Perform a raycast
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask))
         {
-            aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
+            // Update the target position to the hit point
+            targetPosition = hit.point;
         }
+        Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green);
+
+        // Smoothly move towards the target position
+        // aimPos.position = Vector3.Lerp(aimPos.position, targetPosition, aimSmoothSpeed * Time.deltaTime);
     }
 
     void LateUpdate()
